@@ -1,0 +1,1 @@
+export {kitchen} from './kitchen';

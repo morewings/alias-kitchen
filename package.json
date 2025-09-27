@@ -1,0 +1,100 @@
+{
+  "name": "alias-kitchen",
+  "homepage": "https://github.com/morewings/alias-kitchen",
+  "private": false,
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Dima Vyshniakov",
+    "email": "morewings@gmail.com"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "keywords": [
+    "alias",
+    "vite",
+    "rollup",
+    "webpack",
+    "babel",
+    "jest",
+    "vite",
+    "typescript"
+  ],
+  "description": "Single source for your alias configuration",
+  "scripts": {
+    "dev:script": "node ./dev-script.js",
+    "dev": "vite build --watch",
+    "clean:lib": "rm -rf dist types",
+    "build:lib": "vite build",
+    "build:definitions": "tsc --declaration --emitDeclarationOnly --noEmit false --outDir types",
+    "build:types": "api-extractor run --local",
+    "build": "run-s clean:lib build:lib build:definitions build:types",
+    "lint:code": "eslint src/** --report-unused-disable-directives",
+    "fix:code": "run-s 'lint:code --fix'",
+    "lint:types": "tsc --pretty --noEmit",
+    "test": "jest",
+    "prepare": "is-ci || husky",
+    "lint-staged": "lint-staged"
+  },
+  "dependencies": {
+    "get-tsconfig": "^4.10.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.0.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "@eslint/compat": "1.3.1",
+    "@eslint/eslintrc": "3.3.1",
+    "@eslint/js": "9.31.0",
+    "@microsoft/api-extractor": "7.52.13",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "11.0.6",
+    "@semantic-release/npm": "12.0.2",
+    "@semantic-release/release-notes-generator": "14.1.0",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.5.2",
+    "@typescript-eslint/eslint-plugin": "8.38.0",
+    "@typescript-eslint/parser": "8.38.0",
+    "alias-hq": "6.2.4",
+    "commitizen": "4.3.1",
+    "commitlint": "20.0.0",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "9.31.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-prettier": "5.5.3",
+    "globals": "^16.4.0",
+    "husky": "9.1.7",
+    "identity-obj-proxy": "3.0.0",
+    "is-ci": "4.1.0",
+    "jest": "30.0.5",
+    "jest-environment-jsdom": "30.0.5",
+    "lint-staged": "16.1.2",
+    "npm-run-all2": "8.0.4",
+    "prettier": "3.6.2",
+    "semantic-release": "24.2.9",
+    "ts-jest": "29.4.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.38.0",
+    "vite": "7.1.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
+}

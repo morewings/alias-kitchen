@@ -1,0 +1,15 @@
+{
+  "extends" : "./tsconfig.json",
+  "include": [
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "*.config.ts",
+    "src",
+    ".eslintrc.cjs",
+    "commitlint.config.js",
+    "release.config.cjs",
+    "eslint.config.js",
+    "dev-script.js"
+  ],
+  "exclude": ["./dist/**"]
+}

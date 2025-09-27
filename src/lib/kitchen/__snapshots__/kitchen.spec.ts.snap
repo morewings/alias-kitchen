@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`alias kitchen cooks babel configuration 1`] = `
+{
+  "@": "./src",
+}
+`;
+
+exports[`alias kitchen cooks jest configuration 1`] = `
+{
+  "^@/(.*)$": "<rootDir>/src/$1",
+}
+`;
+
+exports[`alias kitchen cooks rollup configuration 1`] = `
+{
+  "@": "/resolved/./src",
+}
+`;
+
+exports[`alias kitchen cooks rspack configuration 1`] = `
+{
+  "@": "/resolved/./src",
+}
+`;
+
+exports[`alias kitchen cooks vite configuration 1`] = `
+{
+  "@": "/resolved/./src",
+}
+`;
+
+exports[`alias kitchen cooks webpack configuration 1`] = `
+{
+  "@": "/resolved/./src",
+}
+`;
