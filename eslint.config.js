@@ -158,4 +158,7 @@ export default [
             ],
         },
     },
+    {
+        ignores: ['**/*.snap'],
+    },
 ];
