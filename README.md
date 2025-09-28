@@ -7,11 +7,15 @@
 
 [![Alias Kitchen logo](./design/logo.jpg)](#)
 
-Alias Kitchen allows developers to have a single source of truth regarding project links.
+Alias Kitchen provides developers an ability to have a single source of truth regarding project import aliases.
+
+## The problem
 
 Are you tired of writing `import {Foo} from './../../../../../bar/bazz/Foo` and then changing it every time you move a file?
 Do you wish you had a single, reliable source of truth for your project's internal links,
 seamlessly integrated across all your favorite bundlers?
+
+## The solution
 
 **Alias Kitchen is here to help!**
 
