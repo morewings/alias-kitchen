@@ -19,14 +19,16 @@ Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
 
 ```json
 {
-    "paths": {
-        "@/components/*": ["./src/components/*"],
-        "@/features/*": ["./src/features/*"]
+    "compilerOptions": {
+        "paths": {
+            "@/components/*": ["./src/components/*"],
+            "@/features/*": ["./src/features/*"]
+        }
     }
 }
 ```
 
-And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, RsPack and so on.
+And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, RsPack, Jest and so on.
 
 ## Installation
 
@@ -37,7 +39,7 @@ npm i -D alias-kitchen
 
 ## Usage with bundlers
 
-alias-kitchen provides a utility function `kitchen` which allows a developer to choose which recipe of alias config they are going to use.
+**alias-kitchen** provides a utility function `kitchen` which allows a developer to choose which recipe of alias config they are going to use.
 
 ```js
 import {kitchen} from 'alias-kitchen';
@@ -45,7 +47,7 @@ import {kitchen} from 'alias-kitchen';
 const aliasConfig = kitchen({recipe: 'rollup'});
 ```
 
-Alias names and paths are picked from your TypeScript config file (`tsconfig.json`).
+Alias names and paths are picked from `compilerOptions.paths` property of TypeScript config file (`tsconfig.json`).
 You can set a custom file name and path to look up.
 
 ```js
@@ -105,7 +107,6 @@ module.exports = {
         [
             'babel-plugin-module-resolver',
             {
-                root: ['./src'],
                 alias: kitchen({recipe: 'babel'}),
             },
         ],
@@ -146,7 +147,7 @@ export default defineConfig({
 ### Jest
 
 ```js
-// rspack.config.ts
+// jest.config.ts
 import {kitchen} from 'alias-kitchen';
 
 export default {
