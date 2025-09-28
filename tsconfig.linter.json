@@ -9,7 +9,8 @@
     "commitlint.config.js",
     "release.config.cjs",
     "eslint.config.js",
-    "dev-script.js"
+    "dev-script.js",
+    "testConfigs",
   ],
   "exclude": ["./dist/**"]
 }
