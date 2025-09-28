@@ -7,7 +7,7 @@ import {kitchen} from './src/lib/kitchen';
 // https://vitejs.dev/config/
 export default defineConfig({
     resolve: {
-        alias: kitchen({recipe: 'rollup'}),
+        alias: kitchen({recipe: 'vite'}),
     },
     build: {
         sourcemap: true,

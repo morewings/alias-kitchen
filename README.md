@@ -1,94 +1,158 @@
-[![CI](https://github.com/morewings/react-library-template/actions/workflows/merge-jobs.yml/badge.svg)](https://github.com/morewings/react-library-template/actions/workflows/merge-jobs.yml)
-[![Storybook deploy](https://github.com/morewings/react-library-template/actions/workflows/pages.yml/badge.svg)](https://github.com/morewings/react-library-template/actions/workflows/pages.yml)
-[![Use this template](https://img.shields.io/badge/use%20this-template-blue?logo=githu)](https://github.com/morewings/react-library-template/generate)
+[![types included](https://img.shields.io/github/package-json/types/morewings/alias-kitchen)](https://github.com/morewings/alias-kitchen)
+[![npm version](https://badge.fury.io/js/alias-kitchen.svg)](https://www.npmjs.com/package/alias-kitchen)
+[![npm downloads](https://img.shields.io/npm/dm/alias-kitchen)](https://www.npmcharts.com/compare/alias-kitchen?interval=7)
+[![npm bundle size](https://deno.bundlejs.com/badge?q=alias-kitchen@latest&config={"esbuild":{"external":["react","react-dom"]}})](https://bundlejs.com/?bundle&q=koval-ui@latest&config={"analysis":"treemap","esbuild":{"external":["react","react-dom"]}})
 
-# React Library Template
+# Alias Kitchen
 
-[![NPM library Create React App template logo](./design/logo.jpg)](#)
+[![Alias Kitchen logo](./design/logo.jpg)](#)
 
-This template repository is your shortcut to building awesome React components and libraries!
+Alias Kitchen allows developers to have a single source of truth regarding project links.
+Are you tired of writing `import {Foo} from './../../../../../bar/bazz/Foo` and then changing it every time you move a file?
+Do you wish you had a single, reliable source of truth for your project's internal links,
+seamlessly integrated across all your favorite bundlers?
 
-Forget about the tedious setup – we've got you covered. Focus on writing your code, and let this template handle the rest.
+**Alias Kitchen is here to help!**
 
-## Features
+Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
 
-- **TypeScript & JavaScript**: Write your code in the language you prefer.
-- **Blazing fast**: **pnpm** for speedy package management and **Vite** for lightning-fast builds.
-- **Husky** enforces pre-commit hooks, **Eslint** and **Stylelint** will keep your code tidy and consistent.
-- **Jest** and **react-testing-library** help you write robust tests.
-- **Storybook** lets you create interactive demos and docs for your components.
-- **Optional Tailwind CSS**: If you're into it, you can easily enable Tailwind CSS for styling.
+```json
+{
+    "paths": {
+        "@/*": ["./src/*"],
+        "@lol/*": ["./public/*"]
+    }
+}
+```
 
-See it in action: [Demo Storybook](https://morewings.github.io/react-library-template/)
+And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, RsPack and so on.
 
-This template is your starting point for building high-quality React libraries. Clone it, customize it, and let's build something amazing!
+## Installation
 
-## Quickstart
-
-### Prerequisites
-
-1. Install **Node** >= 20.x.
-2. Install **pnpm**. E.g. `corepack prepare pnpm@latest --activate`.
-
-
-### Installation
-
-Manually clone repo or use `degit`.
-
-```shell script
-# With CSS Modules config
-npx degit github:morewings/react-library-template my-library
-# With Tailwind CSS config
-npx degit github:morewings/react-library-template#tailwind my-library
-cd ./my-library
-pnpm i
+```shell
+npm i -D alias-kitchen
 ```
 
 
-## Enable Tailwind CSS
+## Usage with bundlers
 
-You can find all changes at this [PR](https://github.com/morewings/react-library-template/pull/161) and [tailwind](https://github.com/morewings/react-library-template/tree/tailwind) branch.
+alias-kitchen provides a utility function `kitchen` which allows a developer to choose which recipe of alias config they are going to use.
 
-## Improve tree shaking
+```js
+import {kitchen} from 'alias-kitchen';
 
-The default settings allow modern bundlers such as Vite and esbuild successfully tree-shake unused modules from the bundle.
-Unfortunately there are problems with Next.js and Webpack not capable to tree-shake single file ES Module.
+const aliasConfig = kitchen({recipe: 'rollup'});
+```
 
-In order to fix this enable `preserveModules` setting in Rollup options.
+Alias names and paths are picked from your TypeScript config file (`tsconfig.json`).
+You can set a custom file name and path to look up.
 
-```ts
+```js
+import {kitchen} from 'alias-kitchen';
+
+const aliasConfig = kitchen({
+    configName: 'jsconfig.json',
+    searchPath: '/your/project/path'
+});
+```
+
+### Rollup
+
+With [@rollup/plugin-alias](https://www.npmjs.com/package/@rollup/plugin-alias).
+
+```js
+// rollup.config.js
+import alias from '@rollup/plugin-alias';
+import {kitchen} from 'alias-kitchen';
+
+export default {
+    //...
+    plugins: [
+        alias({
+            entries: kitchen({recipe: 'rollup'}),
+        }),
+    ],
+};
+```
+
+### Vite
+
+```js
+// vite.config.ts
 import {defineConfig} from 'vite';
+import {kitchen} from 'alias-kitchen';
 
-export default defineConfig(() => ({
-    // ...
-    build: {
-        lib: {
-            // ...
-            fileName: (format, entryName) => {
-                // Create entry file(s) inside the bundle
-                if (entryName === 'src/lib/index') {
-                    return `index.${format === 'es' ? 'js' : 'cjs'}`;
-                // Organize external dependencies which included in the bundle
-                } else if (entryName.includes('node_modules')) {
-                    return `external/module.${format === 'es' ? 'js' : 'cjs'}`
-                }
-                // Keep other modules in places
-                return `${entryName}.${format === 'es' ? 'js' : 'cjs'}`;
+export default defineConfig({
+    //...
+    resolve: {
+        alias: kitchen({recipe: 'vite'}),
+    }
+})
+```
+
+### Babel
+
+With [babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver).
+
+```js
+// babel.config.js
+const alias = require('alias-kitchen');
+
+module.exports = {
+    //...
+    plugins: [
+        [
+            'babel-plugin-module-resolver',
+            {
+                root: ['./src'],
+                alias: alias.kitchen({recipe: 'babel'}),
             },
-            // Change bundle formats to ES Modules and commonJS.
-            // UMD bundle will not work with preserveModules:true
-            formats: ['es', 'cjs'],
-        },
-        rollupOptions: {
-            // ...
-            output: {
-                // ...
-                preserveModules: true,
-            },
-        },
+        ],
+    ],
+};
+```
+
+### Webpack
+
+```js
+// webpack.config.js
+const alias = require('alias-kitchen');
+
+module.exports = {
+    //...
+    resolve: {
+        alias: alias.kitchen({recipe: 'webpack'}),
     },
-}));
+};
 
 ```
 
-You can find all changes at corresponding [PR](https://github.com/morewings/react-library-template/pull/352) and [tree-shaking](https://github.com/morewings/react-library-template/tree/tree-shaking) branch.
+### Rspack
+
+```js
+// rspack.config.ts
+import {defineConfig} from '@rspack/cli';
+import {kitchen} from 'alias-kitchen';
+
+export default defineConfig({
+    //...
+    resolve: {
+        alias: kitchen({recipe: 'rspack'}),
+    },
+});
+```
+
+### Jest
+
+```js
+// rspack.config.ts
+import {kitchen} from 'alias-kitchen';
+
+export default {
+    //...
+    moduleNameMapper: {
+        //...
+        ...kitchen({recipe: 'jest'}),
+    },
+};
+```

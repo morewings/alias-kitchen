@@ -17,10 +17,22 @@ const recipesMapping = {
 };
 
 export type Config = {
+    /**
+     * Choose an alias config shape compatible with your bundler
+     */
     recipe: keyof typeof Recipes;
+    /**
+     * The file name of the TypeScript config file
+     */
+    configName?: string;
+    /**
+     * Path to a file or directory to search up for a tsconfig.json file
+     */
+    searchPath?: string;
 };
 
-export const kitchen = ({recipe}: Config) => {
-    const initialPaths: InitialPaths = getTsconfig()?.config?.compilerOptions?.paths;
+export const kitchen = ({recipe, searchPath, configName}: Config) => {
+    const initialPaths: InitialPaths = getTsconfig(searchPath, configName)?.config
+        ?.compilerOptions?.paths;
     return recipesMapping[recipe](initialPaths);
 };
