@@ -34,6 +34,12 @@ Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
 
 And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, RsPack, Jest and so on.
 
+From now on, you can write the sane import address everywhere. 
+
+```js
+import {Button} from '@/components/Button';
+```
+
 ## Installation
 
 ```shell
