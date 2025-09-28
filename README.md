@@ -8,6 +8,7 @@
 [![Alias Kitchen logo](./design/logo.jpg)](#)
 
 Alias Kitchen allows developers to have a single source of truth regarding project links.
+
 Are you tired of writing `import {Foo} from './../../../../../bar/bazz/Foo` and then changing it every time you move a file?
 Do you wish you had a single, reliable source of truth for your project's internal links,
 seamlessly integrated across all your favorite bundlers?
@@ -96,7 +97,7 @@ With [babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-modu
 
 ```js
 // babel.config.js
-const alias = require('alias-kitchen');
+const kitchen = require('alias-kitchen');
 
 module.exports = {
     //...
@@ -105,7 +106,7 @@ module.exports = {
             'babel-plugin-module-resolver',
             {
                 root: ['./src'],
-                alias: alias.kitchen({recipe: 'babel'}),
+                alias: kitchen({recipe: 'babel'}),
             },
         ],
     ],
@@ -116,12 +117,12 @@ module.exports = {
 
 ```js
 // webpack.config.js
-const alias = require('alias-kitchen');
+const kitchen = require('alias-kitchen');
 
 module.exports = {
     //...
     resolve: {
-        alias: alias.kitchen({recipe: 'webpack'}),
+        alias: kitchen({recipe: 'webpack'}),
     },
 };
 
