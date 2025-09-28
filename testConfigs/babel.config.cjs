@@ -1,14 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const kitchen = require('./../dist/index.cjs').kitchen;
 
 module.exports = {
-    presets: ["@babel/preset-env", "@babel/preset-typescript"],
+    presets: ['@babel/preset-env', '@babel/preset-typescript'],
     plugins: [
-        "@babel/plugin-transform-runtime",
+        '@babel/plugin-transform-runtime',
         [
             // Your aliases will be under this module
-            "babel-plugin-module-resolver",
+            'babel-plugin-module-resolver',
             {
-                root: ["./src"],
+                root: ['./src'],
                 alias: kitchen({recipe: 'babel'}),
             },
         ],
