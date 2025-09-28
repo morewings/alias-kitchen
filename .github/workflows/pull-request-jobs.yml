@@ -55,3 +55,6 @@ jobs:
           pnpm run test --silent
           pnpm run build
           pnpm run test:babel
+          pnpm run test:rollup
+          pnpm run test:webpack
+          pnpm run test:rspack

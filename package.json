@@ -47,7 +47,8 @@
     "test": "jest",
     "test:babel": "babel src/main.ts --config-file ./testConfigs/babel.config.cjs",
     "test:rollup": "rollup --config ./testConfigs/rollup.config.js && rm -rf temp",
-    "test:webpack": "webpack --config ./testConfigs/webpack.config.cjs && rm -rf dist temp",
+    "test:webpack": "webpack --config ./testConfigs/webpack.config.cjs && rm -rf temp",
+    "test:rspack": "rspack build --config ./testConfigs/rspack.config.ts && rm -rf temp",
     "prepare": "is-ci || husky",
     "lint-staged": "lint-staged"
   },
@@ -70,6 +71,8 @@
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
+    "@rspack/cli": "^1.5.7",
+    "@rspack/core": "^1.5.7",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "11.0.6",
