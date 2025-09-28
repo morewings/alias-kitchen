@@ -12,6 +12,13 @@
     "name": "Dima Vyshniakov",
     "email": "morewings@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morewings/alias-kitchen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morewings/alias-kitchen/issues"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
