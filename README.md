@@ -20,8 +20,8 @@ Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
 ```json
 {
     "paths": {
-        "@/*": ["./src/*"],
-        "@lol/*": ["./public/*"]
+        "@/components/*": ["./src/components/*"],
+        "@/features/*": ["./src/features/*"]
     }
 }
 ```

@@ -50,7 +50,8 @@
     "test:webpack": "webpack --config ./testConfigs/webpack.config.cjs && rm -rf temp",
     "test:rspack": "rspack build --config ./testConfigs/rspack.config.ts && rm -rf temp",
     "prepare": "is-ci || husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "get-tsconfig": "^4.10.1"

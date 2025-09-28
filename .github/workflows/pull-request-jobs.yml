@@ -58,3 +58,4 @@ jobs:
           pnpm run test:rollup
           pnpm run test:webpack
           pnpm run test:rspack
+          pnpm run semantic-release --dry-run

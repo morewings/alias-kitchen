@@ -52,7 +52,10 @@ jobs:
         run: |
           pnpm install
 
-#      - name: Publish NPM package
-#        uses: JS-DevTools/npm-publish@v3
-#        with:
-#          token: ${{ secrets.NPM_TOKEN }}
+      - name: Build and publish NPM package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          pnpm run build
+          pnpm run semantic-release
