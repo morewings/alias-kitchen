@@ -34,7 +34,7 @@ Set paths property inside your `tsconfig.json` or `jsconfig.json`.
 
 And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, Rspack, Jest and so on.
 
-From now on, you can use the same import address everywhere. 
+From now on, you can use the same import address everywhere.
 
 ```js
 import {Button} from '@/components/Button';
@@ -167,4 +167,22 @@ export default {
         ...kitchen({recipe: 'jest'}),
     },
 };
+```
+## Add custom recipe function
+
+Developers can provide their own recipe functions to get desired output
+
+```ts
+import path from 'node:path';
+import {kitchen} from 'alias-kitchen';
+
+// produces array of aliases with relative paths resolved to absolute
+const customRecipe = (normalizedPaths) => {
+    return normalizedPaths.map(([alias, directory]) => [
+        alias,
+        path.resolve(directory),
+    ]);
+};
+
+const aliasConfig = kitchen({recipe: customRecipe});
 ```

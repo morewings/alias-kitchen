@@ -34,3 +34,9 @@ export const normalizePath = (initialPaths: InitialPaths): NormalizedPaths => {
         ])
         .map(([alias, directory]) => [removeLastSegment(alias, '/'), directory]);
 };
+
+export const hasMultiplePaths = (initialPaths: InitialPaths) => {
+    return Object.entries(initialPaths || {}).some(
+        ([_, directory]) => directory.length > 1
+    );
+};
