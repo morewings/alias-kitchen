@@ -1,4 +1,4 @@
-import type {InitialPaths} from '@/lib/kitchen/types.ts';
+import type {InitialPaths, NormalizedPaths} from '@/lib/kitchen/types.ts';
 
 export const createPathArray = (initialString: string) => {
     return initialString.split('/');
@@ -26,7 +26,7 @@ export const removeFirstSegment = (pathString: string, segmentName?: string) => 
     return pathString;
 };
 
-export const normalizePath = (initialPaths: InitialPaths) => {
+export const normalizePath = (initialPaths: InitialPaths): NormalizedPaths => {
     return Object.entries(initialPaths || {})
         .map(([alias, [directory]]) => [
             removeLastSegment(alias, '*'),

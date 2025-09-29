@@ -1,8 +1,5 @@
-import type {InitialPaths} from './../types.ts';
-import {normalizePath} from './../utils.ts';
+import type {NormalizedPaths} from './../types.ts';
 
-export const babel = (initialPaths: InitialPaths) => {
-    const pathArray = normalizePath(initialPaths);
-
-    return Object.fromEntries(pathArray);
+export const babel = (normalizedPaths: NormalizedPaths) => {
+    return Object.fromEntries(normalizedPaths);
 };
