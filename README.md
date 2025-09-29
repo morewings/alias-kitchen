@@ -19,7 +19,7 @@ seamlessly integrated across all your favorite bundlers?
 
 **Alias Kitchen is here to help!**
 
-Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
+Set paths property inside your `tsconfig.json` or `jscofing.json`.
 
 ```json
 {
@@ -32,9 +32,9 @@ Set paths property inside your `tsconfig.json` or `jsoncofing.json`.
 }
 ```
 
-And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, RsPack, Jest and so on.
+And then apply the same configuration to your bundlers using **alias-kitchen**. Vite, Rollup, Webpack, Rspack, Jest and so on.
 
-From now on, you can write the sane import address everywhere. 
+From now on, you can use the same import address everywhere. 
 
 ```js
 import {Button} from '@/components/Button';
