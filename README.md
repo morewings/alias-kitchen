@@ -1,7 +1,7 @@
 [![types included](https://img.shields.io/github/package-json/types/morewings/alias-kitchen)](https://github.com/morewings/alias-kitchen)
 [![npm version](https://badge.fury.io/js/alias-kitchen.svg)](https://www.npmjs.com/package/alias-kitchen)
 [![npm downloads](https://img.shields.io/npm/dm/alias-kitchen)](https://www.npmcharts.com/compare/alias-kitchen?interval=7)
-[![npm bundle size](https://deno.bundlejs.com/badge?q=alias-kitchen@latest&config={"esbuild":{"external":["react","react-dom"]}})](https://bundlejs.com/?bundle&q=koval-ui@latest&config={"analysis":"treemap","esbuild":{"external":["react","react-dom"]}})
+[![npm bundle size](https://deno.bundlejs.com/badge?q=alias-kitchen@latest&config={"esbuild":{"external":["react","react-dom"]}})](https://bundlejs.com/?bundle&q=alias-kitchen@latest&config={"analysis":"treemap","esbuild":{"external":["react","react-dom"]}})
 
 # Alias Kitchen
 
