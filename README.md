@@ -19,7 +19,7 @@ seamlessly integrated across all your favorite bundlers?
 
 **Alias Kitchen is here to help!**
 
-Set paths property inside your `tsconfig.json` or `jscofing.json`.
+Set paths property inside your `tsconfig.json` or `jsconfig.json`.
 
 ```json
 {
