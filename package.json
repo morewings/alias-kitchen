@@ -39,7 +39,7 @@
     "vite",
     "typescript"
   ],
-  "description": "Single source for your alias configuration",
+  "description": "Single source of truth for your project's alias configuration",
   "scripts": {
     "dev:script": "node ./dev-script.js",
     "dev": "vite build --watch",
