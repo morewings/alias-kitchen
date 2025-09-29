@@ -1,10 +1,9 @@
 import {resolve} from 'path';
 
-import type {InitialPaths} from './../types.ts';
-import {normalizePath} from './../utils.ts';
+import type {NormalizedPaths} from './../types.ts';
 
-export const webpack = (initialPaths: InitialPaths) => {
-    const pathArray = normalizePath(initialPaths).map(([alias, directory]) => [
+export const webpack = (normalizedPaths: NormalizedPaths) => {
+    const pathArray = normalizedPaths.map(([alias, directory]) => [
         alias,
         resolve(directory),
     ]);

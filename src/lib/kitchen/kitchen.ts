@@ -1,11 +1,9 @@
 import {getTsconfig} from 'get-tsconfig';
 
-import type {InitialPaths} from './types.ts';
-import {Recipes} from './recipesList.ts';
-import {rollup} from './recipes/rollup.ts';
-import {jestRecipe} from './recipes/jest.ts';
-import {babel} from './recipes/babel.ts';
-import {webpack} from './recipes/webpack.ts';
+import type {RecipeFn} from './types.ts';
+import {Recipes} from './types.ts';
+import {rollup, jestRecipe, babel, webpack} from './recipes';
+import {normalizePath} from './utils.ts';
 
 const recipesMapping = {
     [Recipes.rollup]: rollup,
@@ -18,9 +16,18 @@ const recipesMapping = {
 
 export type Config = {
     /**
-     * Choose an alias config shape compatible with your bundler
+     * Choose an alias configuration recipe for your bundler (vite, babel, rollup, etc.) or write your own recipe fn
+     * @example
+     * // custom recipe example
+     * const recipe = (normalizedPaths) => {
+     *   const pathArray = normalizedPaths.map(([alias, directory]) => [
+     *       alias,
+     *       path.resolve(directory),
+     *   ]);
+     *   return Object.fromEntries(pathArray);
+     * };
      */
-    recipe: keyof typeof Recipes;
+    recipe: keyof typeof Recipes | RecipeFn;
     /**
      * The file name of the TypeScript config file
      */
@@ -32,7 +39,11 @@ export type Config = {
 };
 
 export const kitchen = ({recipe, searchPath, configName}: Config) => {
-    const initialPaths: InitialPaths = getTsconfig(searchPath, configName)?.config
-        ?.compilerOptions?.paths;
-    return recipesMapping[recipe](initialPaths);
+    const normalizedPaths = normalizePath(
+        getTsconfig(searchPath, configName)?.config?.compilerOptions?.paths
+    );
+
+    return typeof recipe === 'function'
+        ? recipe(normalizedPaths)
+        : recipesMapping[recipe](normalizedPaths);
 };
