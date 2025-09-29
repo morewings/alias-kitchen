@@ -3,7 +3,7 @@ import {getTsconfig} from 'get-tsconfig';
 import type {RecipeFn} from './types.ts';
 import {Recipes} from './types.ts';
 import {rollup, jestRecipe, babel, webpack} from './recipes';
-import {normalizePath} from './utils.ts';
+import {normalizePath, hasMultiplePaths} from './utils.ts';
 
 const recipesMapping = {
     [Recipes.rollup]: rollup,
@@ -39,9 +39,15 @@ export type Config = {
 };
 
 export const kitchen = ({recipe, searchPath, configName}: Config) => {
-    const normalizedPaths = normalizePath(
-        getTsconfig(searchPath, configName)?.config?.compilerOptions?.paths
-    );
+    const configPaths = getTsconfig(searchPath, configName)?.config?.compilerOptions
+        ?.paths;
+
+    if (hasMultiplePaths(configPaths)) {
+        throw new Error(
+            'alias-kitchen can work only if no more than one directory is mapped each alias!'
+        );
+    }
+    const normalizedPaths = normalizePath(configPaths);
 
     return typeof recipe === 'function'
         ? recipe(normalizedPaths)
