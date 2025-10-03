@@ -109,7 +109,7 @@ With [babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-modu
 
 ```js
 // babel.config.js
-const kitchen = require('alias-kitchen');
+const {kitchen} = require('alias-kitchen');
 
 module.exports = {
     //...
@@ -128,7 +128,7 @@ module.exports = {
 
 ```js
 // webpack.config.js
-const kitchen = require('alias-kitchen');
+const {kitchen} = require('alias-kitchen');
 
 module.exports = {
     //...
