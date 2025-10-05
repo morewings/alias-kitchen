@@ -91,7 +91,6 @@
     "@typescript-eslint/eslint-plugin": "8.45.0",
     "@typescript-eslint/parser": "8.45.0",
     "alias-hq": "6.2.4",
-    "alias-kitchen": "0.2.2",
     "babel-plugin-module-resolver": "5.0.2",
     "commitizen": "4.3.1",
     "commitlint": "20.1.0",

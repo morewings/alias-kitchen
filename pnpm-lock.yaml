@@ -93,9 +93,6 @@ importers:
       alias-hq:
         specifier: 6.2.4
         version: 6.2.4(@babel/preset-env@7.28.3(@babel/core@7.28.4))
-      alias-kitchen:
-        specifier: 0.2.2
-        version: 0.2.2
       babel-plugin-module-resolver:
         specifier: 5.0.2
         version: 5.0.2
@@ -2317,9 +2314,6 @@ packages:
   alias-hq@6.2.4:
     resolution: {integrity: sha512-6KGuO4XB3PbvTfP+WJEJR2dGMy6h0UyLa2/kZOeeD/UIrYoaUAQwKdLovYyCpgZErYD1d3zIuZh6GPMDADvF4g==}
     hasBin: true
-
-  alias-kitchen@0.2.2:
-    resolution: {integrity: sha512-iFWLGs8BohWd2SUR4/QndHI3bbmbFLIplncI45C1ZRdmSMxxC4gmSYyY5ICeFcJDYZfRnhVp89UF5k079JBSUw==}
 
   ansi-escapes@4.3.2:
     resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
@@ -8874,10 +8868,6 @@ snapshots:
       - '@babel/preset-env'
       - encoding
       - supports-color
-
-  alias-kitchen@0.2.2:
-    dependencies:
-      get-tsconfig: 4.10.1
 
   ansi-escapes@4.3.2:
     dependencies:
