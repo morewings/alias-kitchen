@@ -55,8 +55,8 @@ importers:
         specifier: 16.0.3
         version: 16.0.3(rollup@4.52.4)
       '@rollup/plugin-typescript':
-        specifier: 12.1.4
-        version: 12.1.4(rollup@4.52.4)(tslib@2.8.1)(typescript@5.9.3)
+        specifier: 12.3.0
+        version: 12.3.0(rollup@4.52.4)(tslib@2.8.1)(typescript@5.9.3)
       '@rspack/cli':
         specifier: 1.5.8
         version: 1.5.8(@rspack/core@1.5.8)(@types/express@4.17.23)(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(webpack-cli@6.0.1)(webpack@5.102.0)
@@ -1654,8 +1654,8 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/plugin-typescript@12.1.4':
-    resolution: {integrity: sha512-s5Hx+EtN60LMlDBvl5f04bEiFZmAepk27Q+mr85L/00zPDn1jtzlTV6FWn81MaIwqfWzKxmOJrBWHU6vtQyedQ==}
+  '@rollup/plugin-typescript@12.3.0':
+    resolution: {integrity: sha512-7DP0/p7y3t67+NabT9f8oTBFE6gGkto4SA6Np2oudYmZE/m1dt8RB0SjL1msMxFpLo631qjRCcBlAbq1ml/Big==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.14.0||^3.0.0||^4.0.0
@@ -3356,6 +3356,7 @@ packages:
   eslint@9.36.0:
     resolution: {integrity: sha512-hB4FIzXovouYzwzECDcUkJ4OcfOEkXTv2zRY6B9bkwjx/cprAq0uvm1nl7zvQ0/TsUk0zQiN4uPfJpB9m+rPMQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -8397,10 +8398,10 @@ snapshots:
     optionalDependencies:
       rollup: 4.52.4
 
-  '@rollup/plugin-typescript@12.1.4(rollup@4.52.4)(tslib@2.8.1)(typescript@5.9.3)':
+  '@rollup/plugin-typescript@12.3.0(rollup@4.52.4)(tslib@2.8.1)(typescript@5.9.3)':
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.52.4)
-      resolve: 1.22.10
+      resolve: 1.22.11
       typescript: 5.9.3
     optionalDependencies:
       rollup: 4.52.4
